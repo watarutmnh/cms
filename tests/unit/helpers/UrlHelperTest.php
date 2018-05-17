@@ -6,7 +6,7 @@
  * Time: 11:00 AM
  */
 
-use \yii\helpers\Url;
+
 
 class UrlHelperTest extends \Codeception\Test\Unit
 {
@@ -26,9 +26,10 @@ class UrlHelperTest extends \Codeception\Test\Unit
     // tests
     public function testIsAbsoluteUrl()
     {
-        $this->assertEquals(true, Url::isAbsoluteUrl('www.google.com'));
-
-
+        $this->assertEquals(false, \craft\helpers\UrlHelper::isAbsoluteUrl('www.google.com'));
+        $this->assertEquals(true, \craft\helpers\UrlHelper::isAbsoluteUrl('https://www.google.com'));
+        $this->assertEquals(true, \craft\helpers\UrlHelper::isAbsoluteUrl('http://www.google.com'));
+        
     }
 
     public function testIsProtocolRelativeUrl(){
