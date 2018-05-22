@@ -8,26 +8,27 @@
 
 namespace app\helpers;
 
+use \craft\helpers\StringHelper;
 
 class StringHelperTest extends \Codeception\TestCase\Test
 {
     public function testCamelCase(){
-
+        $this->assertEquals('iLikePie', StringHelper::camelCase('i like pie'));
     }
     public function testCharAsArray(){
-
+        $this->assertEquals(['p','i','e'], StringHelper::charsAsArray('pie'));
     }
     public function testCollapseWhitespace(){
-
+        $this->assertEquals('pie hello hi hello', StringHelper::collapseWhitespace('pie    hello   hi     hello'));
     }
     public function testContains(){
-
+        $this->assertEquals(true, StringHelper::contains('piehelloihello','pie'));
     }
     public function testContainsAny(){
-
+        $this->assertEquals(true, StringHelper::containsAny('piehelloihello',['pie','b','el']));
     }
     public function testContainsAll(){
-
+        $this->assertEquals(true, StringHelper::containsAll('piehelloihello',['pie','he','el']));
     }
     public function testCountSubstrings(){
 
@@ -197,15 +198,15 @@ class StringHelperTest extends \Codeception\TestCase\Test
     public function testIsUtf8(){
 
     }
-    public function testEncoding(){
+    //public function testEncoding(){
 
-    }
-    public function testContainsMb4(){
+    //}
+   // public function testContainsMb4(){
 
-    }
-    public function testEncodeMb4(){
+   // }
+   // public function testEncodeMb4(){
 
-    }
+   // }
 
 
 
