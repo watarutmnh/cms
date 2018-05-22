@@ -414,9 +414,15 @@ class View extends \yii\web\View
     }
 
     /**
-     * Renders a micro template for accessing properties of a single object.
-     * The template will be parsed for {variables} that are delimited by single braces, which will get replaced with
-     * full Twig output tags, i.e. {{ object.variable }}. Regular Twig tags are also supported.
+     * Renders an object template.
+     *
+     * The passed-in `$object` will be available to the template as an `object` variable.
+     *
+     * The template will be parsed for “property tags” (e.g. `{foo}`), which will get replaced with
+     * full Twig output tags (e.g. `{{ object.foo|raw }}`.
+     *
+     * If `$object` is an instance of [[Arrayable]], any attributes returned by its [[Arrayable::fields()|fields()]] or
+     * [[Arrayable::extraFields()|extraFields()]] methods will also be available as variables to the template.
      *
      * @param string $template the source template string
      * @param mixed $object the object that should be passed into the template
@@ -553,8 +559,8 @@ class View extends \yii\web\View
      * - TemplateName/index.twig
      *
      * If this is a front-end request, the actual list of file extensions and index filenames are configurable via the
-     * [defaultTemplateExtensions](http://craftcms.com/docs/config-settings#defaultTemplateExtensions) and
-     * [indexTemplateFilenames](http://craftcms.com/docs/config-settings#indexTemplateFilenames) config settings.
+     * [[\craft\config\GeneralConfig::defaultTemplateExtensions|defaultTemplateExtensions]] and
+     * [[\craft\config\GeneralConfig::indexTemplateFilenames|indexTemplateFilenames]] config settings.
      *
      * For example if you set the following in config/general.php:
      *
@@ -1241,7 +1247,7 @@ JS;
 
     /**
      * Invokes a template hook.
-     * This is called by [[HookNode|<code>{% hook %}</code> tags]].
+     * This is called by [[HookNode|`{% hook %}` tags]].
      *
      * @param string $hook The hook name.
      * @param array &$context The current template context.
