@@ -49,6 +49,7 @@ class UrlHelperTest extends \Codeception\Test\Unit
     }
 
     public function testUrl(){
+        $this->assertEquals('scheme://example.com?params', \craft\helpers\UrlHelper::url('http://example.com', 'params','scheme'));
 
     }
     public function testCpUrl(){
