@@ -19,58 +19,60 @@ class StringHelperTest extends \Codeception\TestCase\Test
         $this->assertEquals(['p','i','e'], StringHelper::charsAsArray('pie'));
     }
     public function testCollapseWhitespace(){
-        $this->assertEquals('pie hello hi hello', StringHelper::collapseWhitespace('pie    hello   hi     hello'));
+        $this->assertEquals('i like pie i like pie', StringHelper::collapseWhitespace('i    like   pie     i like    pie'));
     }
     public function testContains(){
-        $this->assertEquals(true, StringHelper::contains('piehelloihello','pie'));
+        $this->assertEquals(true, StringHelper::contains('i like pieilike pie','pie'));
     }
     public function testContainsAny(){
-        $this->assertEquals(true, StringHelper::containsAny('piehelloihello',['pie','b','el']));
+        $this->assertEquals(true, StringHelper::containsAny('i likepieilike pie',['pie','i','li']));
     }
     public function testContainsAll(){
-        $this->assertEquals(true, StringHelper::containsAll('piehelloihello',['pie','he','el']));
+        $this->assertEquals(true, StringHelper::containsAll('i likepieilike pie',['pie','i','li']));
     }
     public function testCountSubstrings(){
-
+        $this->assertEquals(4, StringHelper::countSubstrings('i like piepiepieilikepie','pie'));
     }
     public function testDelimit(){
-
+        $this->assertEquals('i-like-pie', StringHelper::delimit('i Like Pie','-'));
     }
     public function testEndsWith(){
-
+        $this->assertEquals(true, StringHelper::endsWith('i likepieilike pie','e'));
     }
     public function testEnsureLeft(){
-
+        $this->assertEquals('di likepieilike pie', StringHelper::ensureLeft('i likepieilike pie','d'));
+        $this->assertEquals('i likepieilike pie', StringHelper::ensureLeft('i likepieilike pie','i'));
     }
     public function testEnsureRight(){
-
+        $this->assertEquals('di likepieilike pie', StringHelper::ensureLeft('i likepieilike pie','d'));
+        $this->assertEquals('i likepieilike pie', StringHelper::ensureLeft('i likepieilike pie','i'));
     }
     public function testFirst(){
-
+        $this->assertEquals('i li', StringHelper::first('i likepieilike pie',4));
     }
     public function testCharAt(){
-
+        $this->assertEquals('k', StringHelper::charAt('i likepieilike pie',4));
     }
     public function testHasLowerCase(){
-
+        $this->assertEquals(true, StringHelper::hasLowerCase('i LIKEPIEILIKE pie'));
     }
     public function testHasUpperCase(){
-
+        $this->assertEquals(true, StringHelper::hasUpperCase('i LIKEPIEILIKE pie'));
     }
     public function testIndexOf(){
-
+        $this->assertEquals(6, StringHelper::indexOf('i LIKEPIEILIKE pie','P'));
     }
     public function testIndexOfLast(){
-
+        $this->assertEquals(15, StringHelper::indexOfLast('i LIKEPIEILIKE pie','p'));
     }
     public function testInsert(){
-
+        $this->assertEquals('i LIKBOOMEPIEILIKE pie', StringHelper::insert('i LIKEPIEILIKE pie','BOOM',5));
     }
     public function testIsAlpha(){
-
+        $this->assertEquals(true, StringHelper::isAlpha('iLIKEPIEILIKEpie'));
     }
     public function testIsAlphanumeric(){
-
+        $this->assertEquals(true, StringHelper::isAlphanumeric('iLIKEPIEILIKEpie456'));
     }
     public function testIsWhitespace(){
 
