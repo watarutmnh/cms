@@ -75,65 +75,67 @@ class StringHelperTest extends \Codeception\TestCase\Test
         $this->assertEquals(true, StringHelper::isAlphanumeric('iLIKEPIEILIKEpie456'));
     }
     public function testIsWhitespace(){
-
+        $this->assertEquals(true, StringHelper::isWhitespace('   '));
     }
     public function testIsHexadecimal(){
-
+        $this->assertEquals(true, StringHelper::isHexadecimal('0123AafF'));
     }
     public function testIsLowerCase(){
-
+        $this->assertEquals(true, StringHelper::isLowerCase('ilikepie'));
     }
     public function testIsUpperCase(){
-
+        $this->assertEquals(true, StringHelper::isUpperCase('ILIKEPIE'));
     }
     public function testIsUUID(){
-
+        $this->assertEquals(true, StringHelper::isUUID('123e4567-e89b-12d3-a456-426655440000'));
     }
     public function testLast(){
-
+        $this->assertEquals('pie', StringHelper::last('ilikepie',3));
     }
     public function testLength(){
-
+        $this->assertEquals(8, StringHelper::length('ilikepie'));
     }
-    public function testLines(){
-
-    }
+   // public function testLines(){
+    //    $this->assertEquals([['ilikepie'],['ilikepie']], StringHelper::Lines('ilikepie
+    //     ilikepie'));
+  //  }
     public function testLowerCaseFirst(){
-
+        $this->assertEquals('ilikepie', StringHelper::lowercaseFirst('Ilikepie'));
     }
     public function testToKebabCase(){
-
+        $this->assertEquals('i-like-pie', StringHelper::toKebabCase('i like pie'));
     }
     public function testToCamelCase(){
-
+        $this->assertEquals('iLikePie', StringHelper::toCamelCase('i like pie'));
     }
     public function testToPascalCase(){
-
+        $this->assertEquals('ILikePie', StringHelper::toPascalCase('i like pie'));
     }
     public function testToSnakeCase(){
-
+        $this->assertEquals('i_like_pie', StringHelper::toSnakeCase('i like pie'));
     }
     public function testSplit(){
-
+        $this->assertEquals(['i','like', 'pie'], StringHelper::split('i like pie', ' '));
     }
-    public function testSplitOnWords(){
 
+    public function testSplitOnWords(){
+        $this->assertEquals(['i','like', 'pie', 'alot'], StringHelper::splitOnWords('i like pie alot'));
     }
     public function testStripHtml(){
-
+        $this->assertEquals('i like pie alot', StringHelper::stripHtml('i like pie alot<h1></h1>'));
     }
-    public function testPadBoth(){
+   // public function testPadBoth(){
+    //    $this->assertEquals('i like pie', StringHelper::padBoth('i like pie', 10, ' '));
+    //}
+   // public function testPadLeft(){
 
-    }
-    public function testPadLeft(){
+   // }
+    //public function testPadRight(){
 
-    }
-    public function testPadRight(){
-
-    }
-    public function testRandomString(){
-
-    }
+   // }
+   // public function testRandomString(){
+   //     $this->assertCount (38, StringHelper::randomString(36));
+   // }
     public function testRandomStringWithChars(){
 
     }
@@ -141,22 +143,22 @@ class StringHelperTest extends \Codeception\TestCase\Test
 
     }
     public function testRemoveLeft(){
-
+        $this->assertEquals(' i like pie alot', StringHelper::removeLeft('pie i like pie alot','pie'));
     }
     public function testRemoveRight(){
-
+        $this->assertEquals('i like pie ', StringHelper::removeRight('i like pie alot','alot'));
     }
     public function testReplace(){
-
+        $this->assertEquals('i like pie BOOM', StringHelper::replace('i like pie alot','alot','BOOM'));
     }
     public function testReverse(){
-
+        $this->assertEquals('tola eip ekil i', StringHelper::reverse('i like pie alot'));
     }
     public function testSafeTruncate(){
-
+        $this->assertEquals('i like pie', StringHelper::safeTruncate('i like pie alot pie pie', 10));
     }
     public function testStartsWith(){
-
+        $this->assertEquals(true, StringHelper::startsWith('i like pie alot pie pie', 'i'));
     }
     public function testSubstr(){
 
