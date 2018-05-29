@@ -161,47 +161,50 @@ class StringHelperTest extends \Codeception\TestCase\Test
         $this->assertEquals(true, StringHelper::startsWith('i like pie alot pie pie', 'i'));
     }
     public function testSubstr(){
-
+        $this->assertEquals('e pie alo', StringHelper::substr('i like pie alot pie pie', 5,9));
     }
     public function testSwapCase(){
-
+        $this->assertEquals('I LIKE PIE', StringHelper::swapCase('i like pie'));
     }
     public function tesTtitleize(){
-
+        $this->assertEquals('I LIKE PIE', StringHelper::swapCase('i like pie'));
     }
     public function testToLowerCase(){
-
+        $this->assertEquals('i like pie', StringHelper::toLowerCase('I LIKE PIE'));
     }
     public function testToString(){
-
+        $this->assertEquals('I,LIKE,PIE', StringHelper::toString(['I', 'LIKE' ,'PIE']));
     }
     public function testToTitleCase(){
-
+        $this->assertEquals('I Like Pie', StringHelper::toTitleCase('i like pie'));
     }
     public function testTrim(){
-
+        $this->assertEquals('i like pie', StringHelper::trim('i like pie       '));
     }
     public function testUpperCaseFirst(){
-
+        $this->assertEquals('I like pie', StringHelper::upperCaseFirst('i like pie'));
     }
     public function testUUID(){
-
+        $this->assertEquals(true, StringHelper::isUUID(StringHelper::UUID()));
     }
+    //public function testAsciiCharMap(){
+
+   // }
     public function testToAscii(){
-
+        $this->assertEquals('i like pie ', StringHelper::toAscii('i like pie £££§÷→'));
     }
-    public function testEncenc(){
+    //public function testEncenc(){
+    //    $this->assertEquals('base64:Y3J5cHQ6nLUD0fyn8TMZjwsh2zNRNWMyOTIyNDYxNjRmZDE2YTIzZDIzNDM4ZDliOGU0NTNkYWRhZTBmNzc2M2UyMGVlZmJlNjdmYzNlN2M5YTcxYjjsXdnqLkz2ZvCLOlCWBePAR9HfTXiXt2nJI7umxSSBsQ==', StringHelper::encenc('i like pie'));
+   // }
+   // public function testDecdec(){
+    //    $this->assertEquals('I LIKE PIE', StringHelper::toAscii('i like £££§÷→'));
+  //  }
+   // public function testConvertToUtf8(){
 
-    }
-    public function testDecdec(){
+   // }
+   // public function testIsUtf8(){
 
-    }
-    public function testConvertToUtf8(){
-
-    }
-    public function testIsUtf8(){
-
-    }
+    //}
     //public function testEncoding(){
 
     //}
